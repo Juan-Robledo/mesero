@@ -1,26 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="app">
+    <waiter-registration></waiter-registration>
+    <total-tables></total-tables>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import TotalTables from './components/TotalTables'
+import WaiterRegistration from './components/WaiterRegistration'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    HelloWorld
+    TotalTables,
+    WaiterRegistration
   }
-};
+}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+  #app{
+    width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 20px;
+    border: 2px solid #1becae;
+  }
 </style>
