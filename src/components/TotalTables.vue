@@ -1,10 +1,10 @@
 <template>
     <div class="total-tables">
         <div class="tables" v-for="(tables, index) in totalTables" :key="index">
-            <p>Mesa: {{tables.number}}</p>
-            <input type="number" v-model="tables.price" placeholder="Amount">
-            <button @click="add">Add</button>
-            <p>Import: ${{tables.price}}</p>
+            <h4>Mesa: {{tables.number}}</h4>
+            <input type="number" v-model.number="tables.price" placeholder="Amount">
+            <button @click="tables.acountTable = tables.acountTable + tables.price">Add</button>
+            <p>Import: ${{tables.acountTable}}</p>
         </div>
     </div>
 </template>
@@ -16,48 +16,55 @@ export default {
         return {
             totalTables: [{
                 number: 1,
-                price: ''
+                price: '',
+                acountTable: 0
             },
             {
                 number: 2,
-                price: ''
+                price: '',
+                acountTable: 0
             },
             {
                 number: 3,
-                price: ''
+                price: '',
+                acountTable: 0
             },
             {
                 number: 4,
-                price: ''
+                price: '',
+                acountTable: 0
             },
             {
                 number: 5,
-                price: ''
+                price: '',
+                acountTable: 0
             },
             {
                 number: 6,
-                price: ''
+                price: '',
+                acountTable: 0
             },
             {
                 number: 7,
-                price: ''
+                price: '',
+                acountTable: 0
             },
             {
                 number: 8,
-                price: ''
+                price: '',
+                acountTable: 0
             },
             {
                 number: 9,
-                price: ''
+                price: '',
+                acountTable: 0
             }
             ],
-            total: 0
         }
     },
     methods: {
-        add(){
-            this.totalTables.price += this.totalTables.price;
-        }
+    },
+    computed: {
     },
 }
 </script>
