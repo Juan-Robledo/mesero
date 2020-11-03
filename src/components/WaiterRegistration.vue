@@ -2,29 +2,47 @@
     <div class="waiter">
         <h2>Mesero</h2>
         <div class="box">
-            <h3>Total acumulado</h3>
-            <p>$</p>
-            <h3>Cantidad de cargas</h3>
-            <p>#</p>
+            <h3>Total acumulado:</h3>
+            <p>{{Total}}</p>
+            <h3>Cantidad de cargas:</h3>
+            <p>{{inputs}}</p>
         </div>
         <div class="box">
-            <h3>Mesa seleccionada</h3>
-            <p>#</p>
-            <h3>Cantidad de cargas</h3>
-            <p>#</p>
-            <h3>Total acumulado</h3>
-            <p>$</p>
+            <h3>Mesa seleccionada:</h3>
+            <p>{{selectedTable}}</p>
+            <h3>Cantidad de cargas:</h3>
+            <p>{{tableInputs}}</p>
+            <h3>Total acumulado:</h3>
+            <p>{{tableTotal}}</p>
         </div>
         <div class="import">
-            <input type="text" placeholder="Import">
-            <button>Ok</button>
+            <input type="number" placeholder="Import" v-model="amount">
+            <button @click="saveAmount">=></button>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'WaiterRegistration'
+    name: 'WaiterRegistration',
+    props: {
+        total: Number,
+        inputs: Number,
+
+        selectedTable: String,
+        tableInputs: Number,
+        tableTotal: Number
+    },
+    data() {
+        return {
+            amount: null,
+        }
+    },
+    methods: {
+        saveAmount(){
+            this.$emit('amount-saved', this.amount)
+        }
+    },
 }
 </script>
 
@@ -66,7 +84,7 @@ export default {
         width: 20%;
         height: 100%;
         margin: 0 15px;
-        border: none;
+        /* border: none; */
         border-radius: 50%;
         background-color:  #288cdd;
         color: #ffffff;
