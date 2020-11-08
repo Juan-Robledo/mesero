@@ -3,21 +3,21 @@
         <h2>Mesero</h2>
         <div class="box">
             <h3>Total acumulado:</h3>
-            <p>{{Total}}</p>
+            <p>{{`$ ${total}`}}</p>
             <h3>Cantidad de cargas:</h3>
             <p>{{inputs}}</p>
         </div>
         <div class="box">
             <h3>Mesa seleccionada:</h3>
-            <p>{{selectedTable}}</p>
+            <p>{{selectedTable ? selectedTable.name : '???'}}</p>
             <h3>Cantidad de cargas:</h3>
             <p>{{tableInputs}}</p>
             <h3>Total acumulado:</h3>
-            <p>{{tableTotal}}</p>
+            <p>{{`$ ${tableTotal}`}}</p>
         </div>
         <div class="import">
             <input type="number" placeholder="Import" v-model="amount">
-            <button @click="saveAmount">=></button>
+            <button @click="saveAmount" :disabled='!selectedTable'>=></button>
         </div>
     </div>
 </template>
@@ -40,7 +40,8 @@ export default {
     },
     methods: {
         saveAmount(){
-            this.$emit('amount-saved', this.amount)
+            this.$emit('amount-saved', this.amount);
+            this.amount = '';
         }
     },
 }

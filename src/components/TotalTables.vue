@@ -1,7 +1,7 @@
 <template>
-        <div class="tables">
-            <h4>Mesa: {{name}}</h4>
-            <p>Import: $ {{price}}</p>
+        <div :class='["tables", isSelected ? "selected" : ""]'>
+            <h4>{{tableName}}</h4>
+            <p>Import: {{amountFormatted}}</p>
         </div>
 </template>
 
@@ -9,9 +9,15 @@
 export default {
     name: 'TotalTables',
     props: {
-        name: String,
-        price: Number
-    }
+        tableName: String,
+        tableAmount: Number,
+        isSelected: Boolean
+    },
+    computed: {
+        amountFormatted(){
+            return `$ ${this.tableAmount}`;
+        }
+    },
 }
 </script>
 
@@ -21,5 +27,9 @@ export default {
         padding: 10px;
         margin: 10px;
         border: 2px solid #6d2be7;
+        cursor: pointer;
+    }
+    .selected{
+        background-color: #dddddd;
     }
 </style>
